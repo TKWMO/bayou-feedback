@@ -40,11 +40,17 @@ jobs:
         run: pytest -q
 
       - name: Upload artifact to Pages
-        # The repository already has Pages enabled, so skip configure-pages.
-        # Deploy the built docs artifact directly to the Pages site.
+        # Package the generated docs for GitHub Pages deployment.
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v3
+        with:
+          token: ${{ github.token }}
+
       - name: Deploy artifact
         uses: actions/deploy-pages@v2
+        with:
+          artifact_name: github-pages

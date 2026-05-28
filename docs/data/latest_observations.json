@@ -1,78 +1,6 @@
 {
   "data": [
     {
-      "timestamp_local": "2026-05-21T20:30:00+00:00",
-      "station_id": "08075763",
-      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 7.85,
-      "gage_height_ft": 26.15,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T20:30:00+00:00",
-      "station_id": "08075770",
-      "station_name": "Hunting Bayou at IH 610, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 35.3,
-      "gage_height_ft": 18.46,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T20:45:00+00:00",
-      "station_id": "08075763",
-      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 7.7,
-      "gage_height_ft": 26.14,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T20:45:00+00:00",
-      "station_id": "08075770",
-      "station_name": "Hunting Bayou at IH 610, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 34.6,
-      "gage_height_ft": 18.44,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T21:00:00+00:00",
-      "station_id": "08075763",
-      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 7.7,
-      "gage_height_ft": 26.14,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T21:00:00+00:00",
-      "station_id": "08075770",
-      "station_name": "Hunting Bayou at IH 610, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 34.6,
-      "gage_height_ft": 18.44,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T21:15:00+00:00",
-      "station_id": "08075763",
-      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 7.54,
-      "gage_height_ft": 26.13,
-      "data_quality_note": ""
-    },
-    {
-      "timestamp_local": "2026-05-21T21:15:00+00:00",
-      "station_id": "08075770",
-      "station_name": "Hunting Bayou at IH 610, Houston, TX",
-      "source": "USGS Water Services",
-      "discharge_cfs": 34.2,
-      "gage_height_ft": 18.43,
-      "data_quality_note": ""
-    },
-    {
       "timestamp_local": "2026-05-21T21:30:00+00:00",
       "station_id": "08075763",
       "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
@@ -12016,6 +11944,15 @@
       "data_quality_note": ""
     },
     {
+      "timestamp_local": "2026-05-28T19:30:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 32.2,
+      "gage_height_ft": 18.37,
+      "data_quality_note": ""
+    },
+    {
       "timestamp_local": "2026-05-28T19:45:00+00:00",
       "station_id": "08075763",
       "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
@@ -12025,12 +11962,111 @@
       "data_quality_note": ""
     },
     {
+      "timestamp_local": "2026-05-28T19:45:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 32.2,
+      "gage_height_ft": 18.37,
+      "data_quality_note": ""
+    },
+    {
       "timestamp_local": "2026-05-28T20:00:00+00:00",
       "station_id": "08075763",
       "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
       "source": "USGS Water Services",
       "discharge_cfs": 7.1,
       "gage_height_ft": 26.1,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:00:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 31.9,
+      "gage_height_ft": 18.36,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:15:00+00:00",
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 6.95,
+      "gage_height_ft": 26.09,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:15:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 31.9,
+      "gage_height_ft": 18.36,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:30:00+00:00",
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 6.66,
+      "gage_height_ft": 26.07,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:30:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 31.5,
+      "gage_height_ft": 18.35,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:45:00+00:00",
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 6.66,
+      "gage_height_ft": 26.07,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T20:45:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 31.5,
+      "gage_height_ft": 18.35,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T21:00:00+00:00",
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 6.52,
+      "gage_height_ft": 26.06,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T21:00:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 32.5,
+      "gage_height_ft": 18.38,
+      "data_quality_note": ""
+    },
+    {
+      "timestamp_local": "2026-05-28T21:15:00+00:00",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "source": "USGS Water Services",
+      "discharge_cfs": 32.5,
+      "gage_height_ft": 18.38,
       "data_quality_note": ""
     }
   ]
