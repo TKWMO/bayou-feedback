@@ -43,8 +43,8 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact to Pages
-        # Use v2 to avoid deprecated dependency on actions/upload-artifact v3
-        uses: actions/upload-pages-artifact@v2
+        # Use v3 which depends on the supported upload-artifact v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
