@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bayou Feedback: Hunting Bayou Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-o9N1j7xY8bH+n8H4s+Nmobu7YB7+Y4u+UE6n72gkP4o=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-VYwG6o0m9SqG9z2e3uTqmo0dve87JGk26XGDQp6kHxQ=" crossorigin=""></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Hunting Bayou Waterway Dashboard</p>
+        <h1>Bayou Feedback</h1>
+        <p class="subtitle">A Dutch-informed screening dashboard translating open waterway observations into resident-readable infrastructure context.</p>
+      </div>
+      <div class="hero-note">
+        <strong>Near-live observations, not emergency guidance.</strong>
+        <p id="refresh-note">Last successful refresh: loading…</p>
+      </div>
+    </header>
+
+    <section class="grid cards" aria-label="Current waterway observations">
+      <div class="card" id="card-summary">
+        <h2>Current station readings</h2>
+        <div id="station-cards">Loading station cards…</div>
+      </div>
+      <div class="card" id="card-trend">
+        <h2>Trend and freshness</h2>
+        <div id="trend-summary">Loading trend summary…</div>
+      </div>
+      <div class="card" id="card-sources">
+        <h2>Sources and notes</h2>
+        <p>Official data come from USGS Water Services.</p>
+        <p>For official flood alerts, see the Harris County Flood Warning System.</p>
+        <a class="button" href="https://www.harriscountyfws.org/" target="_blank" rel="noreferrer noopener">Harris County Flood Warning System</a>
+      </div>
+    </section>
+
+    <section class="card" id="chart-card">
+      <div class="section-title">
+        <h2>Seven-day trend</h2>
+        <div class="control-bar">
+          <select id="station-select" aria-label="Choose station for chart"></select>
+          <button id="toggle-series">Toggle gage height / discharge</button>
+        </div>
+      </div>
+      <div id="trend-chart">Loading chart…</div>
+    </section>
+
+    <section class="card" id="map-card">
+      <div class="section-title"><h2>Hunting Bayou station map</h2></div>
+      <div id="map" class="map"></div>
+      <p class="caption">Verified USGS station locations along Hunting Bayou. This map provides context, not operational flood guidance.</p>
+    </section>
+
+    <section class="card plain-language">
+      <div class="section-title"><h2>What does this mean?</h2></div>
+      <ul>
+        <li>Gage height shows how high the water surface is at a monitoring station.</li>
+        <li>Discharge measures how much water passes the station per second.</li>
+        <li>Rate of rise can show how quickly conditions are changing, but it is not a flood warning.</li>
+        <li>Detention basins are intended to hold excess stormwater and release it more slowly after peak runoff.</li>
+        <li>Channel improvements are intended to improve conveyance; evaluating effectiveness requires hydraulic analysis beyond this dashboard.</li>
+      </ul>
+    </section>
+
+    <section class="card plain-language">
+      <div class="section-title"><h2>Dutch translation</h2></div>
+      <p>During a Netherlands water-resilience program, visits to Kinderdijk, the Delta Works, TU Delft, Delfland Water Authority, and Living Lab Scheveningen emphasized a shared idea: infrastructure works best when water is monitored, normal use is preserved where possible, and intervention is timed to changing conditions. This dashboard translates that principle into a Houston context by making the observed response of Hunting Bayou and the purpose of local flood-control infrastructure easier to interpret.</p>
+    </section>
+
+    <section class="card" id="historical-card">
+      <div class="section-title">
+        <h2>Historical response screening</h2>
+        <select id="event-select" aria-label="Choose historical event"></select>
+      </div>
+      <div id="historical-panel">Loading historical response metrics…</div>
+      <p class="caption">This is a screening comparison of observed station behavior, not proof of infrastructure effect.</p>
+    </section>
+
+    <section class="card download-card">
+      <div class="section-title"><h2>Data and downloads</h2></div>
+      <p>Download the generated CSV files for reuse or review.</p>
+      <div class="download-links">
+        <a class="button" href="downloads/hunting_bayou_observations_latest.csv">Latest observations CSV</a>
+        <a class="button" href="downloads/hunting_bayou_interpretive_summary.csv">Interpretive summary CSV</a>
+        <a class="button" href="downloads/hunting_bayou_historical_event_summary.csv">Historical event summary CSV</a>
+      </div>
+      <p>See the <a href="methods.html">methodology page</a> for sources, assumptions, and limits.</p>
+    </section>
+
+    <footer class="footer-card">
+      <p>This educational dashboard presents provisional open-data observations and is not a flood warning or emergency-response tool. For official current flood information and alert signup, use the Harris County Flood Warning System. Do not make travel or safety decisions from this project dashboard.</p>
+    </footer>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

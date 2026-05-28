@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "latest_gage_height_ft": 26.1,
+      "latest_discharge_cfs": 7.1,
+      "one_hour_change_ft": 0.0,
+      "six_hour_change_ft": -0.09,
+      "max_gage_height_24h_ft": 27.3,
+      "max_discharge_24h_cfs": 34.6,
+      "trend_label": "Relatively Stable",
+      "latest_observation_age_minutes": 21.0,
+      "freshness": "Recent",
+      "source": "USGS Water Services"
+    },
+    {
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "latest_gage_height_ft": 18.37,
+      "latest_discharge_cfs": 32.2,
+      "one_hour_change_ft": -0.02,
+      "six_hour_change_ft": -0.12,
+      "max_gage_height_24h_ft": 19.84,
+      "max_discharge_24h_cfs": 78.1,
+      "trend_label": "Relatively Stable",
+      "latest_observation_age_minutes": 66.0,
+      "freshness": "Delayed",
+      "source": "USGS Water Services"
+    }
+  ]
+}

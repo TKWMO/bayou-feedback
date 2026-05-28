@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "station_id": "08075763",
+        "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+        "display_name": "Hoffman St"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2402,
+          29.7847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "station_id": "08075770",
+        "station_name": "Hunting Bayou at IH 610, Houston, TX",
+        "display_name": "IH 610"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.1817,
+          29.7522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "station_id": "08075760",
+        "station_name": "Hunting Bayou at Falls St, Houston, TX",
+        "display_name": "Falls St"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.232,
+          29.7607
+        ]
+      }
+    }
+  ]
+}

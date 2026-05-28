@@ -1,0 +1,3 @@
+station_id,station_name,latest_gage_height_ft,latest_discharge_cfs,one_hour_change_ft,six_hour_change_ft,max_gage_height_24h_ft,max_discharge_24h_cfs,trend_label,latest_observation_age_minutes,freshness,source
+08075763,"Hunting Bayou at Hoffman St, Houston, TX",26.1,7.1,0.0,-0.09,27.3,34.6,Relatively Stable,21.0,Recent,USGS Water Services
+08075770,"Hunting Bayou at IH 610, Houston, TX",18.37,32.2,-0.02,-0.12,19.84,78.1,Relatively Stable,66.0,Delayed,USGS Water Services

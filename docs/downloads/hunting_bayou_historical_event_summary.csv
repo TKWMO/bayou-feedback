@@ -1,0 +1,7 @@
+event,station_id,station_name,peak_gage_height_ft,peak_gage_height_time_utc,peak_discharge_cfs,peak_discharge_time_utc,max_one_hour_stage_rise_ft,observations_retrieved,data_completeness_note
+Harvey,08075763,"Hunting Bayou at Hoffman St, Houston, TX",44.32,2017-08-27T15:15:00-05:00,1730.0,2017-08-27T15:15:00-05:00,15.7,2201,Data retrieved from USGS for the event window
+Harvey,08075770,"Hunting Bayou at IH 610, Houston, TX",37.12,2017-08-27T15:15:00-05:00,6680.0,2017-08-27T15:15:00-05:00,19.89,1848,Data retrieved from USGS for the event window
+Harvey,08075760,"Hunting Bayou at Falls St, Houston, TX",,,,,,0,Data unavailable for this station/event
+Imelda,08075763,"Hunting Bayou at Hoffman St, Houston, TX",41.25,2019-09-19T14:15:00-05:00,929.0,2019-09-19T14:15:00-05:00,11.82,1152,Data retrieved from USGS for the event window
+Imelda,08075770,"Hunting Bayou at IH 610, Houston, TX",34.11,2019-09-19T16:15:00-05:00,3110.0,2019-09-19T16:15:00-05:00,16.61,1152,Data retrieved from USGS for the event window
+Imelda,08075760,"Hunting Bayou at Falls St, Houston, TX",,,,,,0,Data unavailable for this station/event

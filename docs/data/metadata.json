@@ -1,0 +1,18 @@
+{
+  "build_time_utc": "2026-05-28T20:20:59Z",
+  "status": "ok",
+  "message": "Latest build completed.",
+  "sources": {
+    "usgs": "USGS Water Services",
+    "hcfcd_project": "https://www.hcfcd.org/Activity/Projects/Hunting-Bayou",
+    "hcfcd_c18": "https://www.hcfcd.org/Activity/Projects/Hunting-Bayou/C-18-Project-Hunting",
+    "harris_fws": "https://www.harriscountyfws.org/"
+  },
+  "refresh_policy": {
+    "description": "Data refresh is near-live observations only, not guaranteed, and uses scheduled hourly retrieval where available."
+  },
+  "notes": {
+    "scheduling": "Scheduled refresh is best-effort only and may not retrieve new observations every hour.",
+    "data_observations": "This site uses near-live observation retrieval from USGS Water Services."
+  }
+}

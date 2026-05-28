@@ -1,0 +1,356 @@
+MASTER BUILD PROMPT FOR GITHUB COPILOT AGENT IN A BROWSER-BASED CODESPACE
+
+You are working inside a new GitHub Codespace for a research-poster companion project. Build the entire repository, test it, and leave it ready for GitHub Pages deployment. Do not stop after scaffolding. Implement the working dashboard, data pipeline, generated outputs, workflow files, documentation, and a deployable static site.
+
+PROJECT TITLE
+Bayou Feedback: A Dutch-Informed, Citizen-Facing Waterway Response Dashboard for Hunting Bayou, Houston
+
+PURPOSE
+Build a public-facing, read-only dashboard that makes technical flood-control behavior more understandable for Houston residents. The focal corridor is Hunting Bayou in northeast/central Houston. This is not an emergency warning product and it must not claim that an infrastructure intervention causes a specific reduction in flood risk without an appropriate hydraulic or before/after analysis.
+
+The dashboard should translate a principle observed during a University of Houston Netherlands resilience trip: Dutch water management treats flood resilience as coordinated, monitored intervention that preserves normal function, temporarily stores or redirects water where needed, and responds when conditions change. Relevant trip contexts were the Delta Works barriers at Deltapark Neeltje Jans and Maeslantkering, Kinderdijk, Delft University of Technology, Delfland Water Authority, and Living Lab Scheveningen.
+
+The Houston translation is:
+- Focus on an under-discussed but technically important waterway corridor rather than a famous city-center bayou.
+- Display live and historical observations in language ordinary residents can understand.
+- Explain how stormwater detention and conveyance improvements are intended to work.
+- Use open government data to show observed waterway response, not to issue emergency instructions or certify infrastructure performance.
+
+FOCAL HOUSTON CORRIDOR
+Use Hunting Bayou as the default and only fully implemented corridor in v1.
+
+Verified contextual facts to represent in a short “About this waterway” panel:
+- Hunting Bayou is in the Houston/Galena Park/Jacinto City area and drains southeast to the Houston Ship Channel.
+- The watershed is highly urbanized and includes Herman Brown Park as a major public/open-area context.
+- HCFCD identifies C-18 Project Hunting and related Hunting Bayou projects, including flood-risk-reduction work involving detention and channel/conveyance improvements.
+- Frame this neutrally: the dashboard is designed to help residents understand observed waterway response around a corridor where flood-control investments exist. Do not say the dashboard proves those investments worked.
+
+OFFICIAL SOURCES
+Use official sources only in the application unless clearly labeled as background.
+
+Primary live data source:
+1. USGS Water Services or the modernized USGS Water Data API for observed gage height and discharge.
+   Preferred rapid-build endpoint if functional:
+   https://waterservices.usgs.gov/nwis/iv/?format=json&sites=08075763,08075770&parameterCd=00060,00065&period=P7D&siteStatus=all
+   Station names:
+   - USGS 08075763: Hunting Bayou at Hoffman St, Houston, TX
+   - USGS 08075770: Hunting Bayou at IH 610, Houston, TX
+   Include discovery/fallback logic for 08075760 (Hunting Bayou at Falls St) only if the endpoint returns valid observation series.
+
+Historical event source:
+2. Use the same USGS observations endpoint to retrieve historical time windows where available:
+   - Hurricane Harvey screening window: 2017-08-25 through 2017-09-05
+   - Tropical Storm Imelda screening window: 2019-09-17 through 2019-09-22
+   Use parameter codes 00060 and 00065 when returned. If a specific series is absent, display “Data unavailable for this station/event” rather than failing.
+
+Contextual official links/data:
+3. Harris County Flood Control District Hunting Bayou and C-18 Project Hunting pages for explanatory source attribution:
+   https://www.hcfcd.org/Activity/Projects/Hunting-Bayou
+   https://www.hcfcd.org/Activity/Projects/Hunting-Bayou/C-18-Project-Hunting
+4. Harris County Flood Warning System should be linked as the official operational flood-information/alert resource:
+   https://www.harriscountyfws.org/
+   Do not scrape or claim to replace it in v1.
+5. Optional map context only if straightforward and stable: FEMA NFHL public GIS service for mapped flood-hazard overlay. If this causes delay or CORS/deployment problems, omit the live FEMA overlay and include it in README future work. Do not let this block deployment.
+6. Optional NWS alert banner only if it is easy and robust:
+   https://api.weather.gov/alerts/active?area=TX
+   Clearly label it as NWS alert data and do not present the site as emergency notification infrastructure.
+
+CRITICAL PRODUCT POSITIONING
+Existing public dashboards already show rainfall, water level, channel status, inundation, floodplain context, or community survey results. The value added here is not “new public raw data.” It is an understandable, waterway-specific interpretation of observed behavior alongside a plainly explained infrastructure context.
+
+Use this user-facing framing:
+“See how Hunting Bayou is responding, what detention and channel improvements are intended to do, and how Dutch adaptive water-management principles can help residents interpret local flood infrastructure.”
+
+Never claim:
+- that a detention basin caused a change shown in the live data;
+- that the dashboard predicts flooding;
+- that a displayed trend means a person is safe;
+- that this replaces HCFCD alerts, emergency management, or hydraulic modeling;
+- that data refresh is real-time or guaranteed.
+
+Use the phrase “near-live observations” and show the data retrieval timestamp prominently.
+
+DEPLOYMENT CONSTRAINTS
+GitHub Pages is static hosting. It cannot run a persistent backend server. Therefore implement:
+- a static public front end in /docs;
+- a Python data ingestion and processing pipeline in /scripts;
+- a GitHub Actions workflow that runs manually and on a periodic schedule, fetches API data, creates processed JSON/CSV and a low-power HTML snapshot, then deploys the /docs folder to GitHub Pages;
+- a last-updated timestamp and stale-data warning in the dashboard.
+
+Run the scheduled workflow hourly at an off-hour minute, for example minute 17, not exactly at the top of the hour. The site must state that scheduled refresh timing is best-effort and not guaranteed.
+
+TECH STACK
+Keep it lightweight and reliable:
+- Python 3.11 for data fetching and generation.
+- requests and pandas are acceptable dependencies; avoid a large backend framework.
+- Static HTML/CSS/vanilla JavaScript for GitHub Pages.
+- Leaflet via CDN for the online map.
+- Plotly.js via CDN for online charts.
+- No React/Vite/Node build unless absolutely necessary. Prefer zero-build static hosting.
+- For the low-power generated HTML, do not use external JavaScript libraries, maps, animation, or network calls. Make it one self-contained HTML file using simple HTML/CSS and inline SVG charts if needed.
+
+REPOSITORY STRUCTURE
+Create this structure, modifying only when there is a clear technical reason:
+
+/
+  README.md
+  requirements.txt
+  .gitignore
+  .github/
+    workflows/
+      deploy-refresh.yml
+  scripts/
+    config.py
+    fetch_usgs.py
+    process_metrics.py
+    generate_static_display.py
+    build_all.py
+    validate_outputs.py
+  docs/
+    index.html
+    display.html
+    methods.html
+    assets/
+      styles.css
+      app.js
+      display.css
+    data/
+      metadata.json
+      latest_observations.json
+      latest_observations.csv
+      timeseries_7d.json
+      timeseries_7d.csv
+      interpretive_summary.json
+      interpretive_summary.csv
+      historical_events.json
+      historical_event_summary.csv
+      station_locations.geojson
+    downloads/
+      hunting_bayou_observations_latest.csv
+      hunting_bayou_interpretive_summary.csv
+      hunting_bayou_historical_event_summary.csv
+    .nojekyll
+  data_raw/
+    .gitkeep
+  tests/
+    test_processing.py
+
+The workflow may write generated data to docs/data and docs/downloads. It must leave a working version of the site in the repository even if a later API call temporarily fails.
+
+DATA PIPELINE REQUIREMENTS
+Implement build_all.py so a single command performs the full data build:
+python scripts/build_all.py
+
+Required behavior:
+1. Fetch recent USGS instantaneous values for the configured stations and parameters for the past 7 days.
+2. Fetch historical event windows for Harvey and Imelda if accessible.
+3. Normalize records into a tidy dataframe with columns:
+   station_id
+   station_name
+   timestamp_utc
+   timestamp_local
+   parameter_code
+   parameter_name
+   value
+   unit
+   provisional_or_qualifier
+   retrieval_timestamp_utc
+   source
+4. Create a wide-format CSV for public interpretation with:
+   timestamp_local
+   station_id
+   station_name
+   gage_height_ft
+   discharge_cfs
+   data_quality_note
+   source
+5. Calculate only transparent derived metrics:
+   - latest gage height, ft
+   - latest discharge, cfs
+   - one-hour gage-height change, ft, where enough readings exist
+   - six-hour gage-height change, ft, where enough readings exist
+   - maximum observed gage height over the past 24 hours
+   - maximum observed discharge over the past 24 hours
+   - trend label based only on recent stage slope: Rising, Falling, Relatively Stable, or Insufficient Data
+   - latest observation age in minutes
+   - data freshness label: Recent, Delayed, or Stale, with clearly documented thresholds
+6. For each historical window calculate, by station when available:
+   - event-window peak gage height and timestamp
+   - event-window peak discharge and timestamp
+   - maximum one-hour stage rise
+   - number of observations retrieved
+   - data completeness note
+7. Do not compute “flood risk,” “safety,” “detention effectiveness,” “capacity remaining,” or a flood warning threshold unless a verified official threshold/data source has been added and explicitly cited.
+8. Save raw API response snapshots to data_raw only during local/manual runs or omit raw versioning from scheduled commits if it produces excessive repository size.
+9. On API failure, preserve the last good generated outputs if they exist; create a metadata status object showing the failed refresh and error type; never replace working data with blank files.
+
+CSV OUTPUT REQUIREMENTS
+The project must provide downloadable CSVs for poster analysis and public reuse:
+- latest observations: the cleaned values closest to native USGS data.
+- interpretive summary: the resident-readable derived metrics and trend labels.
+- historical event summary: the comparison metrics for selected storm windows.
+
+Every CSV must include:
+- source agency;
+- source station ID;
+- retrieval date or event window;
+- definitions for any derived field either as a metadata file or README data dictionary.
+
+ONLINE DASHBOARD CONTENT: docs/index.html
+Create a clean, poster-compatible, public-facing dashboard.
+
+Required sections:
+1. Header:
+   - Project title.
+   - Subtitle: “A Dutch-informed screening dashboard translating open waterway observations into resident-readable infrastructure context.”
+   - “Near-live observations, not emergency guidance” warning.
+   - Last successful data refresh time.
+
+2. Primary cards:
+   - current/most recent gage height at each station;
+   - current/most recent discharge at each station;
+   - one-hour trend label and rate of change;
+   - freshness badge.
+
+3. Seven-day trend chart:
+   - selectable station;
+   - gage height and discharge display, ideally toggled rather than overcrowded;
+   - clear units;
+   - tooltip timestamps in America/Chicago.
+
+4. Map:
+   - Leaflet map centered on Hunting Bayou;
+   - show verified USGS station locations using metadata returned by API or carefully defined station coordinates;
+   - each marker pop-up displays station name, latest value, and last-updated time;
+   - include an “Infrastructure context” marker or callout for Homestead detention/C-18 only if coordinates can be sourced confidently. Otherwise describe the project in text without locating it on the map.
+
+5. “What does this mean?” section:
+   Use plain language:
+   - Gage height tells residents how high the water surface is at a station.
+   - Discharge describes how much water passes the station per unit time.
+   - Rate of rise can show how quickly conditions are changing, but it is not itself a flood warning.
+   - Detention basins are intended to temporarily hold excess stormwater and release it more slowly after immediate flood threat decreases.
+   - Channel improvements are intended to improve conveyance, but evaluating effectiveness requires hydrologic/hydraulic analysis beyond this screening dashboard.
+
+6. “Dutch translation” section:
+   Use concise language:
+   “During a Netherlands water-resilience program, visits to Kinderdijk, the Delta Works, TU Delft, Delfland Water Authority, and Living Lab Scheveningen emphasized a shared idea: infrastructure works best when water is monitored, normal use is preserved where possible, and intervention is timed to changing conditions. This dashboard translates that principle into a Houston context by making the observed response of Hunting Bayou and the purpose of local flood-control infrastructure easier to interpret.”
+
+7. “Historical response screening” panel:
+   - dropdown for Harvey and Imelda;
+   - display station-level event metrics from the generated historical_event_summary.csv;
+   - explain this is a screening comparison of observations, not proof of infrastructure effect.
+
+8. Data/download panel:
+   - buttons to download all generated CSV files;
+   - display source agencies and methodology link.
+
+9. Safety/source footer:
+   Include this prominently:
+   “This educational dashboard presents provisional open-data observations and is not a flood warning or emergency-response tool. For official current flood information and alert signup, use the Harris County Flood Warning System. Do not make travel or safety decisions from this project dashboard.”
+
+LOW-POWER STATIC DISPLAY: docs/display.html
+This output is a key future-direction artifact. Generate it automatically from Python after each successful refresh.
+
+Design constraints:
+- One self-contained HTML file; no API calls, no map tiles, no JavaScript libraries, no external fonts.
+- Target 800 x 480 pixels; black/white or grayscale; high contrast; minimal refresh load suitable for an e-ink display concept attached to a Raspberry Pi Zero W.
+- Show:
+  - “Hunting Bayou Waterway Snapshot”
+  - latest successful refresh time
+  - station name(s)
+  - latest gage height
+  - latest discharge
+  - one-hour trend label
+  - observation age/freshness
+  - a simple inline SVG sparkline for recent gage height if it remains readable
+  - QR/link text pointing users to the full dashboard
+  - the emergency-use disclaimer
+- Include a visible line: “Public information display concept. Not an official flood warning device.”
+- The housing/tamper-resistance hardware is future work only; do not pretend this repository validates enclosure design, field deployment, or reliability.
+
+METHODS PAGE: docs/methods.html
+Create a short methodology and source page suitable for a course evaluator. It must state:
+- project question;
+- why Hunting Bayou was selected;
+- Dutch design translation;
+- official data sources;
+- derived metrics and definitions;
+- limits of interpretation;
+- how live data are refreshed;
+- why the low-power HTML output is proposed as a public-communication extension.
+
+VISUAL AND WRITING STYLE
+- Clean research-poster aesthetic, white background with deep blue/teal accents.
+- No clutter or gimmicky animation.
+- Responsive desktop view and usable mobile view.
+- Plain language for citizen-facing explanation; technical detail on the Methods page.
+- Avoid overstating risk or performance.
+- Add accessible labels, keyboard-readable controls, sufficient contrast, and clear units.
+
+GITHUB ACTIONS AND PAGES
+Create a single deploy-refresh.yml workflow that:
+- triggers on push to main, workflow_dispatch, and scheduled hourly cron at minute 17;
+- installs Python dependencies;
+- runs python scripts/build_all.py;
+- runs python scripts/validate_outputs.py and pytest;
+- deploys docs/ to GitHub Pages using the official Pages actions;
+- optionally commits updated generated CSV/JSON/HTML files back to main only if cleanly implementable without creating a deployment loop;
+- does not fail deployment just because a nonessential historical event download fails, provided last-known or placeholder status is correctly shown;
+- grants only necessary permissions for contents/pages/id-token.
+
+Provide exact setup instructions in README for:
+- creating the Codespace;
+- installing dependencies;
+- running local preview with python -m http.server 8000 --directory docs;
+- running the data build manually;
+- enabling GitHub Pages using GitHub Actions;
+- manually running the refresh workflow;
+- locating downloadable CSVs;
+- using display.html as a conceptual offline/low-power output.
+
+TESTING AND VALIDATION
+Add tests or validation checks for:
+- output files exist and are non-empty after successful build;
+- timestamps parse correctly;
+- trend labels follow the documented calculation;
+- missing USGS values do not crash the build;
+- display.html is standalone and does not contain external script or stylesheet calls;
+- index.html includes disclaimer and official HCFCD link;
+- CSV files contain expected column headers.
+
+INITIALIZATION/FALLBACK
+The site must open even before live fetch succeeds. If initial API calls fail:
+- create example/placeholder metadata stating “Live data not retrieved yet. Run the refresh workflow.”
+- render the dashboard without fictional observations.
+- never fabricate station values.
+
+DELIVERABLE CHECKLIST
+Before declaring completion, make sure the repository contains:
+[ ] functioning public dashboard in docs/index.html
+[ ] near-live USGS data pipeline
+[ ] one-click/manual and scheduled GitHub Actions refresh/deploy workflow
+[ ] downloadable cleaned and interpreted CSVs
+[ ] historical event screening panel and CSV where data are returned
+[ ] one-file generated low-power docs/display.html
+[ ] methods page and source attribution
+[ ] disclaimer and official HCFCD alert link
+[ ] README setup/deployment instructions
+[ ] tests and validation checks
+[ ] no fabricated data or unsupported claims
+
+IMPLEMENTATION ORDER
+Perform these steps without waiting for further approval:
+1. Create repository structure and requirements.
+2. Implement USGS fetcher and run it.
+3. Inspect returned data and adjust station availability handling.
+4. Implement processing/CSV/JSON outputs.
+5. Implement the generated low-power display.html.
+6. Implement index.html and methods.html.
+7. Implement map/charts using output data.
+8. Implement tests and validation.
+9. Implement GitHub Actions deployment.
+10. Run the build and tests in the Codespace.
+11. Provide a concise final summary listing what was completed, what data were successfully retrieved, how to publish to Pages, and any unresolved API/data limitations.
+
+Do not ask me for aesthetic preferences during the build. Use the stated clean research-poster style. Do not add unsupported hydraulic claims. Do not abandon the project if an optional layer fails. Deliver a functioning, honest MVP first.

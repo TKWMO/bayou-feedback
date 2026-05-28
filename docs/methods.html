@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology | Hunting Bayou Dashboard</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="page-shell methods-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Methodology and sources</p>
+        <h1>How this dashboard was built</h1>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Project question</h2>
+      <p>Can a citizen-facing dashboard make Hunting Bayou waterway observations easier to understand by translating near-live USGS station data into plain-language context and a Dutch-informed resilience framing?</p>
+    </section>
+
+    <section class="card">
+      <h2>Why Hunting Bayou?</h2>
+      <p>Hunting Bayou is the only corridor fully implemented in this version. It is an under-discussed Houston corridor with USGS monitoring stations, identified local flood-control projects, and an urban watershed context near Herman Brown Park.</p>
+    </section>
+
+    <section class="card">
+      <h2>Dutch design translation</h2>
+      <p>The project emphasizes monitoring, maintaining normal use where possible, and interpreting changing water conditions. That translation is expressed by showing observed gage height, discharge, rate changes, and the intended role of detention and conveyance improvements without claiming operational effectiveness.</p>
+    </section>
+
+    <section class="card">
+      <h2>Official data sources</h2>
+      <ul>
+        <li>USGS Water Services for instantaneous values and historical event screening.</li>
+        <li>Harris County Flood Control District project pages for local infrastructure context.</li>
+        <li>Harris County Flood Warning System for official flood alerts.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Derived metrics and definitions</h2>
+      <ul>
+        <li><strong>Gage height</strong>: water-surface elevation above a reference point, shown in feet.</li>
+        <li><strong>Discharge</strong>: volume of water passing the station per second, shown in cubic feet per second.</li>
+        <li><strong>One-hour and six-hour change</strong>: difference in gage height compared with the same station one or six hours earlier.</li>
+        <li><strong>Max observed 24h</strong>: highest station reading seen in the past 24 hours.</li>
+        <li><strong>Trend label</strong>: Rising, Falling, Relatively Stable, or Insufficient Data based on recent stage slope.</li>
+        <li><strong>Freshness</strong>: Recent (<= 60 min), Delayed (<= 180 min), Stale (> 180 min).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Limits of interpretation</h2>
+      <p>This dashboard does not predict flooding, certify infrastructure performance, or replace official alerts. It does not compute flood risk, capacity remaining, or detention effectiveness without official thresholds or cited analysis.</p>
+    </section>
+
+    <section class="card">
+      <h2>Refresh process</h2>
+      <p>A scheduled GitHub Actions workflow runs hourly at minute 17 to fetch USGS data, process outputs, and update the static site. The build is best-effort and the dashboard labels near-live observation age.</p>
+    </section>
+
+    <section class="card">
+      <h2>Low-power display output</h2>
+      <p>A single-file HTML snapshot is generated for conceptual offline or low-power display use. It is designed to be self-contained and suitable for display concepts like an e-ink or Raspberry Pi viewer.</p>
+    </section>
+
+    <footer class="footer-card">
+      <p>Sources: USGS Water Services, HCFCD project pages, Harris County Flood Warning System.</p>
+    </footer>
+  </div>
+</body>
+</html>

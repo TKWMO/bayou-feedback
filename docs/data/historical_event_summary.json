@@ -1,0 +1,76 @@
+{
+  "data": [
+    {
+      "event": "Harvey",
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "peak_gage_height_ft": 44.32,
+      "peak_gage_height_time_utc": "2017-08-27T15:15:00-05:00",
+      "peak_discharge_cfs": 1730.0,
+      "peak_discharge_time_utc": "2017-08-27T15:15:00-05:00",
+      "max_one_hour_stage_rise_ft": 15.7,
+      "observations_retrieved": 2201,
+      "data_completeness_note": "Data retrieved from USGS for the event window"
+    },
+    {
+      "event": "Harvey",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "peak_gage_height_ft": 37.12,
+      "peak_gage_height_time_utc": "2017-08-27T15:15:00-05:00",
+      "peak_discharge_cfs": 6680.0,
+      "peak_discharge_time_utc": "2017-08-27T15:15:00-05:00",
+      "max_one_hour_stage_rise_ft": 19.89,
+      "observations_retrieved": 1848,
+      "data_completeness_note": "Data retrieved from USGS for the event window"
+    },
+    {
+      "event": "Harvey",
+      "station_id": "08075760",
+      "station_name": "Hunting Bayou at Falls St, Houston, TX",
+      "peak_gage_height_ft": NaN,
+      "peak_gage_height_time_utc": NaN,
+      "peak_discharge_cfs": NaN,
+      "peak_discharge_time_utc": NaN,
+      "max_one_hour_stage_rise_ft": NaN,
+      "observations_retrieved": 0,
+      "data_completeness_note": "Data unavailable for this station/event"
+    },
+    {
+      "event": "Imelda",
+      "station_id": "08075763",
+      "station_name": "Hunting Bayou at Hoffman St, Houston, TX",
+      "peak_gage_height_ft": 41.25,
+      "peak_gage_height_time_utc": "2019-09-19T14:15:00-05:00",
+      "peak_discharge_cfs": 929.0,
+      "peak_discharge_time_utc": "2019-09-19T14:15:00-05:00",
+      "max_one_hour_stage_rise_ft": 11.82,
+      "observations_retrieved": 1152,
+      "data_completeness_note": "Data retrieved from USGS for the event window"
+    },
+    {
+      "event": "Imelda",
+      "station_id": "08075770",
+      "station_name": "Hunting Bayou at IH 610, Houston, TX",
+      "peak_gage_height_ft": 34.11,
+      "peak_gage_height_time_utc": "2019-09-19T16:15:00-05:00",
+      "peak_discharge_cfs": 3110.0,
+      "peak_discharge_time_utc": "2019-09-19T16:15:00-05:00",
+      "max_one_hour_stage_rise_ft": 16.61,
+      "observations_retrieved": 1152,
+      "data_completeness_note": "Data retrieved from USGS for the event window"
+    },
+    {
+      "event": "Imelda",
+      "station_id": "08075760",
+      "station_name": "Hunting Bayou at Falls St, Houston, TX",
+      "peak_gage_height_ft": NaN,
+      "peak_gage_height_time_utc": NaN,
+      "peak_discharge_cfs": NaN,
+      "peak_discharge_time_utc": NaN,
+      "max_one_hour_stage_rise_ft": NaN,
+      "observations_retrieved": 0,
+      "data_completeness_note": "Data unavailable for this station/event"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.DS_Store
+.env
+.venv/
+venv/
+.envrc
+*.log
+*.sqlite
+# Keep generated docs data and pages for GitHub Pages deployment
+!docs/data/*.json
+!docs/data/*.csv
+!docs/*.html
