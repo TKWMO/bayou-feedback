@@ -29,6 +29,12 @@ body {
   border-radius: 20px;
   background: #ffffff;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  margin-bottom: 32px;
+}
+
+.page-shell > .card,
+.page-shell > .footer-card {
+  margin-top: 32px;
 }
 
 .hero h1 {

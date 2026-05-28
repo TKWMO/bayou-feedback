@@ -164,18 +164,13 @@ function renderMap() {
 }
 
 async function initialize() {
-  const [latestData, summaryData, timeseriesData, historicalData, metadataData, geoData] = await Promise.all([
-    loadJson("data/latest_observations.json"),
+  const [summaryData, metadataData, geoData] = await Promise.all([
     loadJson("data/interpretive_summary.json"),
-    loadJson("data/timeseries_7d.json"),
-    loadJson("data/historical_event_summary.json"),
     loadJson("data/metadata.json"),
     loadJson("data/station_locations.geojson"),
   ]);
 
   appState.latest = summaryData?.data || [];
-  appState.timeseries = timeseriesData?.data || [];
-  appState.history = historicalData?.data || [];
   appState.metadata = metadataData || {};
   appState.geojson = geoData || null;
 
@@ -183,10 +178,24 @@ async function initialize() {
   renderStationCards();
   renderTrendSummary();
   populateStationSelect();
+  renderMap();
+
+  // Load larger chart and historical data after the main page is visible.
+  loadAdditionalData();
+}
+
+async function loadAdditionalData() {
+  const [timeseriesData, historicalData] = await Promise.all([
+    loadJson("data/timeseries_7d.json"),
+    loadJson("data/historical_event_summary.json"),
+  ]);
+
+  appState.timeseries = timeseriesData?.data || [];
+  appState.history = historicalData?.data || [];
+
   populateEventSelect();
   renderHistoricalPanel();
   renderChart();
-  renderMap();
 }
 
 stationSelect.addEventListener("change", () => {
