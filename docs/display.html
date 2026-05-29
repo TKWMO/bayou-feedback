@@ -7,72 +7,78 @@
 <style>
 :root {
   color-scheme: light;
-  color: #08243d;
-  background: #eef6ff;
+  background: #e9f2ff;
+  color: #102a43;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100vh; overflow: hidden; }
-body { display: grid; place-items: center; padding: 16px; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 0; background: #e9f2ff; }
 main {
-  width: min(1280px, 100%);
-  height: min(760px, 100%);
-  background: white;
-  border-radius: 28px;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+  width: min(1400px, 100vw);
+  height: min(840px, 100vh);
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1.35fr 0.95fr;
+  grid-template-rows: auto 1fr;
   gap: 18px;
-  padding: 26px;
-  overflow: hidden;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
 }
-header {
+.header-panel {
   grid-column: 1 / -1;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
-header div { max-width: 720px; }
-h1 { margin: 0; font-size: clamp(2rem, 2.6vw, 3rem); line-height: 1.05; }
-.subtitle { margin: 12px 0 0; color: #3b5368; font-size: 1rem; max-width: 760px; }
-.status-chip { padding: 10px 16px; background: #eef7ff; border-radius: 999px; color: #15509f; font-weight: 700; border: 1px solid #c9ddf4; }
-.meta { margin-top: 8px; color: #4a6179; font-size: 0.94rem; }
-.card { background: #f8fbff; border-radius: 22px; padding: 20px; box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.04); display: grid; gap: 14px; }
-.card h2 { margin: 0; font-size: 1.05rem; color: #0b2340; }
+.header-text {
+  display: grid;
+  gap: 12px;
+}
+h1 { margin: 0; font-size: clamp(2rem, 2.8vw, 3.2rem); line-height: 1.02; }
+.subtitle { margin: 0; color: #3f556f; font-size: 1rem; max-width: 760px; }
+.status-chip { display: inline-flex; align-items: center; padding: 10px 16px; border-radius: 999px; background: #eef4ff; color: #1d4ed8; font-weight: 700; border: 1px solid #c7d6f4; }
+.meta-group { display: grid; gap: 10px; justify-items: end; text-align: right; color: #4f6278; font-size: 0.95rem; }
+.card { background: #f8fbff; border-radius: 24px; padding: 22px; display: grid; gap: 14px; border: 1px solid rgba(15, 23, 42, 0.05); }
+.card h2 { margin: 0; font-size: 1.05rem; color: #0a223d; }
 .metric-list { display: grid; gap: 10px; }
-.metric { display: grid; grid-template-columns: auto minmax(80px, 1fr); gap: 8px; align-items: center; font-size: 0.98rem; }
-.metric strong { color: #0b2340; }
+.metric { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; font-size: 0.95rem; }
+.metric strong { color: #0a223d; }
 .metric span { justify-self: end; color: #1f3d67; font-weight: 700; }
-.chart-card { grid-column: 1 / -1; display: grid; gap: 14px; }
-.chart-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.chart-card { grid-column: 1 / -1; display: grid; gap: 16px; }
+.chart-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .chart-header h2 { margin: 0; font-size: 1.05rem; }
-.sparkline { width: 100%; height: 180px; border-radius: 18px; background: linear-gradient(180deg, rgba(33, 110, 240, 0.08), rgba(217, 230, 255, 0.4)); }
-.chart-note { margin: 0; color: #4a6179; font-size: 0.95rem; }
-.footer { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 20px; background: #f4f8ff; border-radius: 18px; font-size: 0.95rem; color: #4b5e75; }
-.footer strong { color: #0b2340; }
-@media (max-width: 1100px) {
-  main { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; height: auto; }
-  .chart-card { grid-column: 1 / -1; }
+.chart-note { margin: 0; color: #516078; font-size: 0.95rem; }
+.sparkline { width: 100%; height: 236px; border-radius: 22px; background: linear-gradient(180deg, rgba(32, 124, 235, 0.08), rgba(221, 235, 255, 0.45)); display: flex; align-items: center; justify-content: center; }
+.sparkline svg { width: 100%; height: 100%; }
+.sparkline polyline { fill: none; stroke: #0a2440; stroke-width: 3; }
+.footer { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 14px 18px; border-radius: 20px; background: #eef4ff; color: #4f6278; font-size: 0.95rem; }
+.footer strong { color: #0a223d; }
+@media (max-width: 1200px) {
+  main { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto; height: 100vh; }
+  .header-panel { flex-direction: column; align-items: stretch; }
+  .meta-group { justify-items: start; text-align: left; }
+  .chart-card { max-height: 280px; }
 }
 </style>
 </head>
 <body>
 <main>
-<header>
-  <div>
-    <p class="status-chip">Hunting Bayou analytics</p>
+<div class="header-panel">
+  <div class="header-text">
+    <span class="status-chip">Hunting Bayou landscape snapshot</span>
     <h1>Bayou Feedback Snapshot</h1>
-    <p class="subtitle">A compact landscape summary for stand-alone desktop displays, showing current station conditions, trends, and recent waterway response in one screen.</p>
+    <p class="subtitle">All critical station metrics and response analytics shown together in a single landscape desktop view.</p>
   </div>
-  <div>
-    <p class="meta">Latest build: 2026-05-28 21:26:36 UTC</p>
-    <p class="meta">Device-ready layout — no vertical scrolling required on standard landscape screens.</p>
+  <div class="meta-group">
+    <div>Latest build: 2026-05-28 21:26:36 UTC</div>
+    <div>Designed for a single, non-scrolling screen footprint.</div>
   </div>
-</header>
+</div>
 <section class="card">
-  <h2>Hunting Bayou at Hoffman St, Houston, TX</h2>
+  <h2>Hunting Bayou at Hoffman St</h2>
   <div class="metric-list">
     <div class="metric"><strong>Gage height</strong><span>26.06 ft</span></div>
     <div class="metric"><strong>Discharge</strong><span>6.52 cfs</span></div>
@@ -81,7 +87,7 @@ h1 { margin: 0; font-size: clamp(2rem, 2.6vw, 3rem); line-height: 1.05; }
   </div>
 </section>
 <section class="card">
-  <h2>Hunting Bayou at IH 610, Houston, TX</h2>
+  <h2>Hunting Bayou at IH 610</h2>
   <div class="metric-list">
     <div class="metric"><strong>Gage height</strong><span>18.38 ft</span></div>
     <div class="metric"><strong>Discharge</strong><span>32.5 cfs</span></div>
@@ -92,13 +98,15 @@ h1 { margin: 0; font-size: clamp(2rem, 2.6vw, 3rem); line-height: 1.05; }
 <section class="card chart-card">
   <div class="chart-header">
     <h2>Recent waterway response</h2>
-    <p class="chart-note">Summary of recent stage and discharge direction.</p>
+    <p class="chart-note">Key trend line for the current observation period.</p>
   </div>
-  <svg class="sparkline" viewBox="0 0 720 110" xmlns="http://www.w3.org/2000/svg"><polyline fill="none" stroke="#0b2340" stroke-width="3" points="0,100 80,88 160,78 240,68 320,55 400,42 480,35 560,28 640,22 720,15" /></svg>
+  <div class="sparkline">
+    <svg viewBox="0 0 720 110" xmlns="http://www.w3.org/2000/svg"><polyline points="0,100 80,88 160,78 240,68 320,55 400,42 480,35 560,28 640,22 720,15" /></svg>
+  </div>
 </section>
 <div class="footer">
-  <div>Public information display — not an official flood warning device.</div>
-  <div><strong>For official alerts:</strong> Harris County Flood Warning System</div>
+  <div><strong>Note:</strong> Public information display only.</div>
+  <div>Not an official flood warning resource.</div>
 </div>
 </main>
 </body>
